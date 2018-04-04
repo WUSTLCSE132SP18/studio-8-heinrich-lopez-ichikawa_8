@@ -27,15 +27,15 @@ public class CountSteps {
 		File file2 = new File("\\Users\\emily\\git\\studio-8-heinrich-lopez-ichikawa_8\\data\\steps2.csv");
 		Scanner sc2 =  new Scanner(file2);
 		
-		for(int i = 0; i < count/3 - 2; i++) {
-			String prevLine = sc2.nextLine();
-			String[] prevVal = prevLine.split(",");
-			double prev = Double.parseDouble(prevVal[2]);
-			
-			String line = sc2.nextLine();
-			String[] val = line.split(",");
-			double current = Double.parseDouble(val[2]);
-			
+		String prevLine = sc2.nextLine();
+		String[] prevVal = prevLine.split(",");
+		double prev = Double.parseDouble(prevVal[2]);
+		
+		String line = sc2.nextLine();
+		String[] val = line.split(",");
+		double current = Double.parseDouble(val[2]);
+		
+		for(int i = 0; i < count/3; i++) {
 			String nextLine = sc2.nextLine();
 			String[] nextVal = nextLine.split(",");
 			double next = Double.parseDouble(nextVal[2]);
@@ -43,6 +43,9 @@ public class CountSteps {
 			if(current > prev && current > next) {
 				peakCount++;
 			}
+			
+			prev = current;
+			current = next;
 		}
 		
 		System.out.println(peakCount);
